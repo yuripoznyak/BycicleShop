@@ -1,0 +1,68 @@
+﻿@model BycicleShop.Models.ProductModels.ProductExtendedModel
+@{
+    ViewBag.Title = "ProductInfo";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+<h2>ProductInfo</h2>
+
+<div>
+    <table>
+        <tr>
+            <td>
+                <img src="@Url.Action("Show", "Image", new {id = Model.Id})" alt="s" />
+            </td>
+            <td>
+            </td>
+            </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Size)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Weght)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Weght)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Color)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.SellStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SellStartDate)
+            </td>
+        </tr>
+    </table>
+
+</div>

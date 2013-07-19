@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b616f66019541bcb1dded74c6d6437c" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Basket" Width="1.5" PointX="2.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Order" Width="1.5" PointX="2.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductOrder" Width="1.5" PointX="5.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductsCount" Width="1.5" PointX="5.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.User" Width="1.5" PointX="0.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductCategory" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductModel" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Basket_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_ProductsCount_Basket" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Order_ProductOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Product_ProductOrder_ProductOrderId" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Product_ProductsCount" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Product_ProductCategory_ProductCategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_Product_ProductModel_ProductModelID" ManuallyRouted="false" />
+        <AssociationConnector Association="AdventureWorksDataModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

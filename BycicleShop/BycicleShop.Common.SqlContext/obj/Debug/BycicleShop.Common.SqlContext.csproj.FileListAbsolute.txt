@@ -1,0 +1,10 @@
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\BycicleShop.Common.SqlContext.dll.config
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\BycicleShop.Common.SqlContext.dll
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\BycicleShop.Common.SqlContext.pdb
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\EntityFramework.dll
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\EntityFramework.xml
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\obj\Debug\BycicleShop.Common.SqlContext.dll
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\obj\Debug\BycicleShop.Common.SqlContext.pdb
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\AdventureWorksLT2012_Data.mdf
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\bin\Debug\AdventureWorksLT2012_Data_log.ldf
+D:\Work\BycicleShop\BycicleShop\BycicleShop.Common.SqlContext\obj\Debug\BycicleShop.Common.SqlContext.csprojResolveAssemblyReference.cache

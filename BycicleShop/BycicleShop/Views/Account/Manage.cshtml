@@ -1,0 +1,37 @@
+﻿@model BycicleShop.Models.AccountModels.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<!--<hgroup>
+    <h1>ViewBag.Title.</h1>
+</hgroup>
+
+<p class="message-success">ViewBag.StatusMessage</p>
+
+<p>You're logged in as <strong>User.Identity.Name</strong>.</p>
+
+if (ViewBag.HasLocalPassword)
+{
+    Html.Partial("_ChangePasswordPartial")
+}
+else
+{ 
+    Html.Partial("_SetPasswordPartial")
+}
+
+<section>
+    Html.Action("RemoveExternalLogins")
+
+    <h3>Add an external login</h3>
+    Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>-->
+
+<a href="@Url.Action("MyOrders", "Order", new {userId = WebSecurity.GetUserId(User.Identity.Name)})" >Orders</a>
+<a href="@Url.Action("MyBasket", "Order", new {userId = WebSecurity.GetUserId(User.Identity.Name)})" >Basket</a>
+
+
+
+@Scripts.Render("~/bundles/modernizr")
+

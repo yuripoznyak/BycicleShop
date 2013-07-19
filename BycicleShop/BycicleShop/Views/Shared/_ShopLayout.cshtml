@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Bycicle Shop</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="@Url.Action("Index", "Home")">Bycicle Shop</a>
+                <div class="nav-collapse collapse">
+                    <div class="navbar-text pull-right">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                    <ul class="nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Shop", "Index", "StoreManager")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" style="padding-top: 20px">
+        <div class="search-center">
+            <!--<input class="input-large" style="width: 500px" name="search" />-->
+            @using (Html.BeginForm("Search", "StoreManager"))
+            {
+                <input type="text" name="searchString" style="margin-top: 10px"/>
+                <input type="submit" class="btn btn-primary btn-small" name="search" value="Search"/>
+            }
+        </div>
+
+        @RenderSection("featured", required: false)
+        <section>
+            @RenderBody()
+        </section>
+        <hr>
+        <footer id="f">
+            <p>&copy; @DateTime.Now.Year - Itransition</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

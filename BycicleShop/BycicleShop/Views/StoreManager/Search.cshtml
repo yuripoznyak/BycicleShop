@@ -1,0 +1,52 @@
+﻿@model BycicleShop.Models.ProductModels.SearchProductModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+<h3 style="text-align: center">Search result for " @Model.SearchString "</h3>
+
+<div class="row">
+    @foreach (var item in Model.ProductModel)
+    {
+        <div class="span3">
+            <a href="@Url.Action("ProductInfo", new { id = item.Id })" class="link">
+                <img src="@Url.Action("Show", "Image", new { id = item.Id })" alt="s" style="width: 180px; height: 150px"/><br>
+                @Html.DisplayFor(modelItem => item.Name).ToString()</a>
+            <p style="color: red">@Html.DisplayFor(modelItem => item.Price)</p>
+        </div>
+    }
+</div>
+
+<div class="search-center">
+    Page @(Model.ProductModel.PageCount < Model.ProductModel.PageNumber ? 0 : Model.ProductModel.PageNumber)
+    of @Model.ProductModel.PageCount
+    &nbsp; 
+        @if (Model.ProductModel.HasPreviousPage)
+        { 
+            @Html.ActionLink("<<", "Index", new { page = 1 }) 
+            @Html.Raw("&nbsp;");
+            @Html.ActionLink("< Prev", "Index", new { page = Model.ProductModel.PageNumber - 1 }) 
+        }
+        else
+        { 
+            @:<< 
+            @Html.Raw("&nbsp;"); 
+            @:< Prev 
+        }
+    &nbsp; 
+        @if (Model.ProductModel.HasNextPage)
+        {
+            @Html.ActionLink("Next >", "Index", new { page = Model.ProductModel.PageNumber + 1 })
+            @Html.Raw("&nbsp;")
+            ;
+            @Html.ActionLink(">>", "Index", new { page = Model.ProductModel.PageCount })
+        }
+        else
+        {
+            @:Next > 
+            @Html.Raw("&nbsp;")
+            @:>> 
+        }
+</div>

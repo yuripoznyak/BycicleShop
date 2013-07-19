@@ -1,0 +1,44 @@
+﻿@using System.Globalization
+@model List<BycicleShop.Models.OrderModels.OrderSimpleModel>
+
+@{
+    ViewBag.Title = "MyOrders";
+}
+
+<div>
+    <table class="table table-bordered table-striped table-hover">
+        <tr class="info">
+            <td>#
+            </td>
+            <td>Sent Date
+            </td>
+            <td>Adress
+            </td>
+            <td>Obtained
+            </td>
+        </tr>
+        @for (var i = 1; i <= Model.Count; i++)
+        {
+            <tr>
+                <td>@Html.Display(i.ToString(CultureInfo.InvariantCulture))
+                </td>
+                <td>@if (Model[i].SentDate != null)
+                    {
+                        @Html.Display(Model[i].SentDate.ToString())
+                    }
+                </td>
+                <td>@Html.Display(Model[i].Adress)
+                </td>
+                <td>@if (Model[i].Obtained)
+                    {
+                        @Html.Display("Sent")
+                    }
+                    else
+                    {
+                        @Html.Display("Not sent")
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

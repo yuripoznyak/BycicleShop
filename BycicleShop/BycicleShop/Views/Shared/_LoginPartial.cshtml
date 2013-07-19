@@ -1,0 +1,30 @@
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@if (Request.IsAuthenticated)
+{
+    
+    <ul class="nav">
+        <li>
+            @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "login", title = "Manage" })
+        </li>
+        <li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="login" >Log off</a>
+            }
+        </li>
+    </ul>
+    
+}
+else
+{
+    <ul class="nav">
+        <li>
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login" })
+        </li>
+        <li>
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login" })
+        </li>
+    </ul>
+}

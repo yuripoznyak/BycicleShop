@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdventureWorksDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AdventureWorks" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Baskets" EntityType="AdventureWorksDataModel.Basket" />
+    <EntitySet Name="Orders" EntityType="AdventureWorksDataModel.Order" />
+    <EntitySet Name="ProductOrders" EntityType="AdventureWorksDataModel.ProductOrder" />
+    <EntitySet Name="ProductsCounts" EntityType="AdventureWorksDataModel.ProductsCount" />
+    <EntitySet Name="Users" EntityType="AdventureWorksDataModel.User" />
+    <EntitySet Name="Products" EntityType="AdventureWorksDataModel.Product" />
+    <EntitySet Name="ProductCategories" EntityType="AdventureWorksDataModel.ProductCategory" />
+    <EntitySet Name="ProductModels" EntityType="AdventureWorksDataModel.ProductModel" />
+    <AssociationSet Name="FK_Basket_User" Association="AdventureWorksDataModel.FK_Basket_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Basket" EntitySet="Baskets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductsCount_Basket" Association="AdventureWorksDataModel.FK_ProductsCount_Basket">
+      <End Role="Basket" EntitySet="Baskets" />
+      <End Role="ProductsCount" EntitySet="ProductsCounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_ProductOrder" Association="AdventureWorksDataModel.FK_Order_ProductOrder">
+      <End Role="ProductOrder" EntitySet="ProductOrders" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="AdventureWorksDataModel.FK_Order_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductOrder_ProductOrderId" Association="AdventureWorksDataModel.FK_Product_ProductOrder_ProductOrderId">
+      <End Role="ProductOrder" EntitySet="ProductOrders" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductsCount" Association="AdventureWorksDataModel.FK_Product_ProductsCount">
+      <End Role="ProductsCount" EntitySet="ProductsCounts" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory_ProductCategoryID" Association="AdventureWorksDataModel.FK_Product_ProductCategory_ProductCategoryID">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductModel_ProductModelID" Association="AdventureWorksDataModel.FK_Product_ProductModel_ProductModelID">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" Association="AdventureWorksDataModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="ProductCategory1" EntitySet="ProductCategories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Basket">
+    <Key>
+      <PropertyRef Name="BasketId" />
+    </Key>
+    <Property Name="BasketId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="AdventureWorksDataModel.FK_Basket_User" FromRole="Basket" ToRole="User" />
+    <NavigationProperty Name="ProductsCounts" Relationship="AdventureWorksDataModel.FK_ProductsCount_Basket" FromRole="Basket" ToRole="ProductsCount" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Adress" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="Obtained" Type="Boolean" />
+    <Property Name="Sent" Type="Boolean" />
+    <Property Name="ProductOrderId" Type="Int32" />
+    <Property Name="SentDate" Type="DateTime" Precision="3" />
+    <Property Name="ObtainedDate" Type="DateTime" Precision="3" />
+    <Property Name="Comments" Type="String" MaxLength="1000" Unicode="true" FixedLength="true" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="ProductOrder" Relationship="AdventureWorksDataModel.FK_Order_ProductOrder" FromRole="Order" ToRole="ProductOrder" />
+    <NavigationProperty Name="User" Relationship="AdventureWorksDataModel.FK_Order_User" FromRole="Order" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ProductOrder">
+    <Key>
+      <PropertyRef Name="ProductOrderId" />
+    </Key>
+    <Property Name="ProductOrderId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="AdventureWorksDataModel.FK_Order_ProductOrder" FromRole="ProductOrder" ToRole="Order" />
+    <NavigationProperty Name="Products" Relationship="AdventureWorksDataModel.FK_Product_ProductOrder_ProductOrderId" FromRole="ProductOrder" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductsCount">
+    <Key>
+      <PropertyRef Name="ProductsCountId" />
+    </Key>
+    <Property Name="ProductsCountId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="BasketId" Type="Int32" />
+    <NavigationProperty Name="Basket" Relationship="AdventureWorksDataModel.FK_ProductsCount_Basket" FromRole="ProductsCount" ToRole="Basket" />
+    <NavigationProperty Name="Products" Relationship="AdventureWorksDataModel.FK_Product_ProductsCount" FromRole="ProductsCount" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="129" Unicode="true" FixedLength="true" />
+    <Property Name="EmailAdress" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="true" />
+    <Property Name="FirstName" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="LastName" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="Adress" Type="String" MaxLength="1000" Unicode="true" FixedLength="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="LastActivityDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordVerificationToken" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Baskets" Relationship="AdventureWorksDataModel.FK_Basket_User" FromRole="User" ToRole="Basket" />
+    <NavigationProperty Name="Orders" Relationship="AdventureWorksDataModel.FK_Order_User" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ProductNumber" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+    <Property Name="Color" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="StandardCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Size" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="Weight" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ProductCategoryID" Type="Int32" />
+    <Property Name="ProductModelID" Type="Int32" />
+    <Property Name="SellStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SellEndDate" Type="DateTime" Precision="3" />
+    <Property Name="DiscontinuedDate" Type="DateTime" Precision="3" />
+    <Property Name="ThumbNailPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ThumbnailPhotoFileName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductOrderId" Type="Int32" />
+    <Property Name="ProductsCountId" Type="Int32" />
+    <NavigationProperty Name="ProductOrder" Relationship="AdventureWorksDataModel.FK_Product_ProductOrder_ProductOrderId" FromRole="Product" ToRole="ProductOrder" />
+    <NavigationProperty Name="ProductsCount" Relationship="AdventureWorksDataModel.FK_Product_ProductsCount" FromRole="Product" ToRole="ProductsCount" />
+    <NavigationProperty Name="ProductCategory" Relationship="AdventureWorksDataModel.FK_Product_ProductCategory_ProductCategoryID" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductModel" Relationship="AdventureWorksDataModel.FK_Product_ProductModel_ProductModelID" FromRole="Product" ToRole="ProductModel" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategoryID" />
+    </Key>
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentProductCategoryID" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="AdventureWorksDataModel.FK_Product_ProductCategory_ProductCategoryID" FromRole="ProductCategory" ToRole="Product" />
+    <NavigationProperty Name="ProductCategory1" Relationship="AdventureWorksDataModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory" ToRole="ProductCategory1" />
+    <NavigationProperty Name="ProductCategory2" Relationship="AdventureWorksDataModel.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory1" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="ProductModel">
+    <Key>
+      <PropertyRef Name="ProductModelID" />
+    </Key>
+    <Property Name="ProductModelID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CatalogDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="AdventureWorksDataModel.FK_Product_ProductModel_ProductModelID" FromRole="ProductModel" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Basket_User">
+    <End Role="User" Type="AdventureWorksDataModel.User" Multiplicity="1" />
+    <End Role="Basket" Type="AdventureWorksDataModel.Basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Basket">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductsCount_Basket">
+    <End Role="Basket" Type="AdventureWorksDataModel.Basket" Multiplicity="0..1" />
+    <End Role="ProductsCount" Type="AdventureWorksDataModel.ProductsCount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Basket">
+        <PropertyRef Name="BasketId" />
+      </Principal>
+      <Dependent Role="ProductsCount">
+        <PropertyRef Name="BasketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_ProductOrder">
+    <End Role="ProductOrder" Type="AdventureWorksDataModel.ProductOrder" Multiplicity="0..1" />
+    <End Role="Order" Type="AdventureWorksDataModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductOrder">
+        <PropertyRef Name="ProductOrderId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ProductOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Role="User" Type="AdventureWorksDataModel.User" Multiplicity="1" />
+    <End Role="Order" Type="AdventureWorksDataModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductOrder_ProductOrderId">
+    <End Role="ProductOrder" Type="AdventureWorksDataModel.ProductOrder" Multiplicity="0..1" />
+    <End Role="Product" Type="AdventureWorksDataModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductOrder">
+        <PropertyRef Name="ProductOrderId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductsCount">
+    <End Role="ProductsCount" Type="AdventureWorksDataModel.ProductsCount" Multiplicity="0..1" />
+    <End Role="Product" Type="AdventureWorksDataModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductsCount">
+        <PropertyRef Name="ProductsCountId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductsCountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory_ProductCategoryID">
+    <End Role="ProductCategory" Type="AdventureWorksDataModel.ProductCategory" Multiplicity="0..1" />
+    <End Role="Product" Type="AdventureWorksDataModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductModel_ProductModelID">
+    <End Role="ProductModel" Type="AdventureWorksDataModel.ProductModel" Multiplicity="0..1" />
+    <End Role="Product" Type="AdventureWorksDataModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="ProductModelID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
+    <End Role="ProductCategory" Type="AdventureWorksDataModel.ProductCategory" Multiplicity="0..1" />
+    <End Role="ProductCategory1" Type="AdventureWorksDataModel.ProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="ProductCategory1">
+        <PropertyRef Name="ParentProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
