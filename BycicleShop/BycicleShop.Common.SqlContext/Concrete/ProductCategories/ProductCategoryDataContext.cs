@@ -8,20 +8,24 @@ namespace BycicleShop.Common.SqlContext.Concrete
     {
         private AdventureWorks _dataContext = new AdventureWorks();
         
-        private DbSet<ProductModel> Entity
+        public DbSet<ProductCategory> Entity
         {
-            get { return _dataContext.ProductModels; }
+            get { return _dataContext.ProductCategories; }
         }
 
-        private ProductModel Get(int id)
+        private ProductCategory Get(int id)
         {
-            return Entity.First(x => x.ProductModelID == id);
+            return Entity.First(x => x.ProductCategoryID == id);
         }
 
-        public ProductModel Get(string name)
+        public ProductCategory Get(string name)
         {
             return Entity.First(x => x.Name == name);
         }
 
+        public int GetId(string name)
+        {
+            return Entity.First(x => x.Name.ToUpper() == name.ToUpper()).ProductCategoryID;
+        }
     }
 }

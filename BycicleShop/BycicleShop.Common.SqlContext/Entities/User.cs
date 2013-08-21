@@ -18,6 +18,7 @@ namespace BycicleShop.Common.SqlContext.Entities
         {
             this.Baskets = new HashSet<Basket>();
             this.Orders = new HashSet<Order>();
+            this.UserInRoles = new HashSet<UserInRole>();
         }
     
         public int UserId { get; set; }
@@ -43,5 +44,6 @@ namespace BycicleShop.Common.SqlContext.Entities
     
         public virtual ICollection<Basket> Baskets { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<UserInRole> UserInRoles { get; set; }
     }
 }

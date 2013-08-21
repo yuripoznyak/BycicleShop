@@ -27,9 +27,10 @@ namespace BycicleShop.Common.SqlContext.Entities
     
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ProductOrder> ProductOrders { get; set; }
         public DbSet<ProductsCount> ProductsCounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserInRole> UserInRoles { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductModel> ProductModels { get; set; }

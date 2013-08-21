@@ -16,22 +16,14 @@
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Adress" ColumnName="Adress" />
-          <ScalarProperty Name="Obtained" ColumnName="Obtained" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
           <ScalarProperty Name="Sent" ColumnName="Sent" />
-          <ScalarProperty Name="ProductOrderId" ColumnName="ProductOrderId" />
           <ScalarProperty Name="SentDate" ColumnName="SentDate" />
-          <ScalarProperty Name="ObtainedDate" ColumnName="ObtainedDate" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
           <ScalarProperty Name="Comments" ColumnName="Comments" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ProductOrders">
-      <EntityTypeMapping TypeName="AdventureWorksDataModel.ProductOrder">
-        <MappingFragment StoreEntitySet="ProductOrder">
-          <ScalarProperty Name="ProductOrderId" ColumnName="ProductOrderId" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,6 +34,16 @@
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Count" ColumnName="Count" />
           <ScalarProperty Name="BasketId" ColumnName="BasketId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="AdventureWorksDataModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,6 +73,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserInRoles">
+      <EntityTypeMapping TypeName="AdventureWorksDataModel.UserInRole">
+        <MappingFragment StoreEntitySet="UserInRole">
+          <ScalarProperty Name="UserInRoleId" ColumnName="UserInRoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="AdventureWorksDataModel.Product">
         <MappingFragment StoreEntitySet="Product">
@@ -92,7 +103,6 @@
           <ScalarProperty Name="rowguid" ColumnName="rowguid" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="ProductOrderId" ColumnName="ProductOrderId" />
-          <ScalarProperty Name="ProductsCountId" ColumnName="ProductsCountId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

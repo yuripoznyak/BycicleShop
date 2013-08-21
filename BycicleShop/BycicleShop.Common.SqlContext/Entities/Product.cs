@@ -14,6 +14,11 @@ namespace BycicleShop.Common.SqlContext.Entities
     
     public partial class Product
     {
+        public Product()
+        {
+            this.ProductsCounts = new HashSet<ProductsCount>();
+        }
+    
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }
@@ -32,10 +37,8 @@ namespace BycicleShop.Common.SqlContext.Entities
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
         public Nullable<int> ProductOrderId { get; set; }
-        public Nullable<int> ProductsCountId { get; set; }
     
-        public virtual ProductOrder ProductOrder { get; set; }
-        public virtual ProductsCount ProductsCount { get; set; }
+        public virtual ICollection<ProductsCount> ProductsCounts { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductModel ProductModel { get; set; }
     }

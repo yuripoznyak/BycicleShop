@@ -14,31 +14,37 @@
             </td>
             <td>Adress
             </td>
-            <td>Obtained
+            <td>Received
             </td>
         </tr>
-        @for (var i = 1; i <= Model.Count; i++)
-        {
+        @{
+            var i = 1;
+            foreach (var item in Model)
+            {
             <tr>
-                <td>@Html.Display(i.ToString(CultureInfo.InvariantCulture))
+                <td>
+                    <a href="@Url.Action("Order", new {id = item.Id})">@(i++.ToString(CultureInfo.InvariantCulture))</a>
                 </td>
-                <td>@if (Model[i].SentDate != null)
+                <td>@if (item.SentDate != null)
                     {
-                        @Html.Display(Model[i].SentDate.ToString())
+                        <p>@item.SentDate.ToString()</p>
                     }
                 </td>
-                <td>@Html.Display(Model[i].Adress)
+                <td>
+                    <p>@item.Adress</p>
                 </td>
-                <td>@if (Model[i].Obtained)
+                <td>
+                    @if (item.Received)
                     {
-                        @Html.Display("Sent")
+                        <p>Received</p> 
                     }
                     else
                     {
-                        @Html.Display("Not sent")
+                       <p>Not Received</p> 
                     }
                 </td>
             </tr>
+            }
         }
     </table>
 </div>

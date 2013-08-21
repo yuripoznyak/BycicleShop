@@ -104,20 +104,22 @@ namespace Itransition.Membership
                     return null;
                 }
                 var user = new User
-                    {
-                        UserName = username,
-                        EmailAdress = email,
-                        Password = hashedPassword,
-                        IsApproved = isApproved,
-                        CreateDate = DateTime.UtcNow,
-                        LastPasswordChangedDate = DateTime.UtcNow,
-                        PasswordFailuresSinceLastSuccess = 0,
-                        LastLoginDate = DateTime.UtcNow,
-                        LastActivityDate = DateTime.UtcNow,
-                        LastLockoutDate = DateTime.UtcNow,
-                        IsLockedOut = false,
-                        LastPasswordFailureDate = DateTime.UtcNow,
-                    };
+                {
+                    UserName = username,
+                    EmailAdress = email,
+                    Password = hashedPassword,
+                    IsApproved = isApproved,
+                    CreateDate = DateTime.UtcNow,
+                    LastPasswordChangedDate = DateTime.UtcNow,
+                    PasswordFailuresSinceLastSuccess = 0,
+                    LastLoginDate = DateTime.UtcNow,
+                    LastActivityDate = DateTime.UtcNow,
+                    LastLockoutDate = DateTime.UtcNow,
+                    IsLockedOut = false,
+                    LastPasswordFailureDate = DateTime.UtcNow,
+                    ConfirmationToken = "",
+                    PasswordVerificationToken = ""
+                };
                 context.Entity.Add(user);
                 context.SaveChanges();
                 status = MembershipCreateStatus.Success;
@@ -420,7 +422,7 @@ namespace Itransition.Membership
                 var users =
                     context.Entity.Where(x => x.EmailAdress == emailToMatch)
                            .OrderBy(x => x.UserName)
-                           .Skip(pageIndex*pageSize)
+                           .Skip(pageIndex * pageSize)
                            .Take(pageSize);
                 foreach (var user in users)
                 {
@@ -452,7 +454,7 @@ namespace Itransition.Membership
                 var users =
                     context.Entity.Where(x => x.UserName == usernameToMatch)
                            .OrderBy(x => x.UserName)
-                           .Skip(pageIndex*pageSize)
+                           .Skip(pageIndex * pageSize)
                            .Take(pageSize);
                 foreach (var user in users)
                 {
@@ -480,7 +482,7 @@ namespace Itransition.Membership
             using (var context = new UsersDataContext())
             {
                 totalRecords = context.Entity.Count();
-                var users = context.Entity.OrderBy(x => x.UserName).Skip(pageIndex*pageSize).Take(pageSize);
+                var users = context.Entity.OrderBy(x => x.UserName).Skip(pageIndex * pageSize).Take(pageSize);
                 foreach (var user in users)
                 {
                     membershipUsers.Add(new MembershipUser(System.Web.Security.Membership.Provider.Name, user.UserName, user.UserId,

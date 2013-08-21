@@ -14,18 +14,24 @@ namespace BycicleShop.Common.SqlContext.Entities
     
     public partial class Order
     {
+        public Order()
+        {
+            this.ProductsCounts = new HashSet<ProductsCount>();
+        }
+    
         public int OrderId { get; set; }
         public int UserId { get; set; }
         public string Adress { get; set; }
-        public Nullable<bool> Obtained { get; set; }
+        public bool Received { get; set; }
         public Nullable<bool> Sent { get; set; }
-        public Nullable<int> ProductOrderId { get; set; }
         public Nullable<System.DateTime> SentDate { get; set; }
-        public Nullable<System.DateTime> ObtainedDate { get; set; }
+        public Nullable<System.DateTime> ReceivedDate { get; set; }
         public string Comments { get; set; }
-        public Nullable<int> Price { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Review { get; set; }
     
-        public virtual ProductOrder ProductOrder { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<ProductsCount> ProductsCounts { get; set; }
     }
 }

@@ -14,17 +14,14 @@ namespace BycicleShop.Common.SqlContext.Entities
     
     public partial class ProductsCount
     {
-        public ProductsCount()
-        {
-            this.Products = new HashSet<Product>();
-        }
-    
         public int ProductsCountId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public int Count { get; set; }
         public Nullable<int> BasketId { get; set; }
+        public Nullable<int> OrderId { get; set; }
     
         public virtual Basket Basket { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

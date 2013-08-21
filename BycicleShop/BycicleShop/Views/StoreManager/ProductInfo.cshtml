@@ -14,7 +14,7 @@
             </td>
             <td>
             </td>
-            </tr>
+        </tr>
         <tr>
             <td>
                 @Html.DisplayNameFor(model => model.Name)
@@ -64,5 +64,7 @@
             </td>
         </tr>
     </table>
+    <a href="@Url.Action("AddToBasket", "Order", new { productId = item.Id, returnUrl = Request.Url.PathAndQuery, count = 1 })"
+               class="btn btn-small btn-primary search-center">Add to Basket</a>
 
 </div>

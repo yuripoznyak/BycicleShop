@@ -46,7 +46,7 @@
   },
   'Callbacks': function() {
     /// <signature>
-    ///   <summary>A multi-purpose callbacks list object that provides a powerful way to manage callback lists.</summary>
+    ///   <summary>A multi-purpose callbacks list object that provides a powerful way to Account callback lists.</summary>
     ///   <param name="flags" type="String">An optional list of space-separated flags that change how the callback list behaves.</param>
     ///   <returns type="Callbacks" />
     /// </signature>

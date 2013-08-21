@@ -1,37 +1,38 @@
-﻿@model BycicleShop.Models.AccountModels.LocalPasswordModel
+﻿@model BycicleShop.Models.AccountModels.ManageModel
 @{
-    ViewBag.Title = "Manage Account";
+    ViewBag.Title = "Manage";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
-<!--<hgroup>
-    <h1>ViewBag.Title.</h1>
-</hgroup>
+<section class="span5-form">
+    @using (Html.BeginForm("Manage", "Account"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
 
-<p class="message-success">ViewBag.StatusMessage</p>
-
-<p>You're logged in as <strong>User.Identity.Name</strong>.</p>
-
-if (ViewBag.HasLocalPassword)
-{
-    Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    Html.Partial("_SetPasswordPartial")
-}
-
-<section>
-    Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>-->
-
-<a href="@Url.Action("MyOrders", "Order", new {userId = WebSecurity.GetUserId(User.Identity.Name)})" >Orders</a>
-<a href="@Url.Action("MyBasket", "Order", new {userId = WebSecurity.GetUserId(User.Identity.Name)})" >Basket</a>
-
-
-
-@Scripts.Render("~/bundles/modernizr")
-
+        <fieldset>
+            <legend>Manage</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(x => x.FirstName)
+                    @Html.TextBoxFor(x => x.FirstName)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.LastName)
+                    @Html.TextBoxFor(x => x.LastName)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Adress)
+                    @Html.TextBoxFor(x => x.Adress)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.PhoneNumber)
+                    @Html.TextBoxFor(x => x.PhoneNumber)
+                </li>
+            </ol>
+            <input class="btn btn-primary btn-large" type="submit" value="Manage"/>
+        </fieldset>
+    }
+    <a href="@Url.Action("ChangePassword")">Change Password</a>
+    <a href="@Url.Action("ChangeEmail")">Change Email Adress</a>
+</section>

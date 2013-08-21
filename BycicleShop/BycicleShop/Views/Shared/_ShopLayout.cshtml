@@ -37,6 +37,7 @@
                 <input type="text" name="searchString" style="margin-top: 10px"/>
                 <input type="submit" class="btn btn-primary btn-small" name="search" value="Search"/>
             }
+            @Html.ActionLink("Extended Search","ExtendedSearch","StoreManager")
         </div>
 
         @RenderSection("featured", required: false)

@@ -1,11 +1,12 @@
-﻿@model BycicleShop.Models.AccountModels.RegisterModel
+﻿@using Recaptcha
+@model BycicleShop.Models.AccountModels.RegisterModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
 <section class="span5-form">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary()
@@ -44,6 +45,10 @@
                 <li>
                     @Html.LabelFor(m => m.Adress)
                     @Html.TextBoxFor(m => m.Adress)
+                </li>
+                <li>
+                    @Html.Raw(Html.GenerateCaptcha("Recaptcha", "clean"))
+                    @Html.ValidationMessage("recaptcha")
                 </li>
             </ol>
             <input class="btn btn-primary" type="submit" value="Register" />

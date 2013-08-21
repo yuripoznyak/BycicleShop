@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
-using BycicleShop.Common.SqlContext.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using BycicleShop.Models.ProductModels;
 
 namespace BycicleShop.Models.OrderModels
 {
-    public class OrderExtendedModel
+    public class OrderExtendedModel : OrderSimpleModel
     {
+        [Required]
         public int OrderId { get; set; }
-        public string Adress { get; set; }
-        public User User { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
-        public bool Sent { get; set; }
-        public bool Obtained { get; set; }
+        
+        public bool? Sent { get; set; }
+        
+        [Display(Name = "Total Price")]
+        public decimal? TotalPrice { get; set; }
+
+        public List<ProductsCountModel> Products = new List<ProductsCountModel>();
     }
 }

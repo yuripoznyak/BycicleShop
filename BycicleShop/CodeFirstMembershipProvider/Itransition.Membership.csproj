@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomMembershipProvider.cs" />
+    <Compile Include="CustomRoleProvider.cs" />
     <Compile Include="WebSecurity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

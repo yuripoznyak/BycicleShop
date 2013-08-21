@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model List<BycicleShop.Models.ProductModels.ProductSimpleModel>
+@model BycicleShop.Models.BasketModels.BasketModel
 
 @{
     ViewBag.Title = "MyOrders";
@@ -10,25 +10,48 @@
         <tr class="info">
             <td>#
             </td>
-            <td>Sent Date
+            <td>Product Name
             </td>
-            <td>Adress
+            <td>Price
             </td>
-            <td>Obtained
+            <td>Image
+            </td>
+            <td>Count
+            </td>
+            <td>Delete
             </td>
         </tr>
-        @for (var i = 1; i <= Model.Count; i++)
-        {
+        @{
+            var i = 1;
+            foreach (var item in Model.Items)
+            {
             <tr>
-                <td>@Html.Display(i.ToString(CultureInfo.InvariantCulture))
+                <td>
+                    <p>@(i++.ToString(CultureInfo.InvariantCulture))</p>
                 </td>
-                <td>@Html.Display(Model[i].Name);
+                <td>
+                    <a href="@Url.Action("ProductInfo", "StoreManager", new { id = item.ProductId })">@(item.ProductName)</a>
                 </td>
-                <td>@Html.Display(Model[i].Price.ToString(CultureInfo.InvariantCulture))
+                <td>
+                    <p>@(item.ProductPrice.ToString(CultureInfo.InvariantCulture))</p>
                 </td>
-                <td><img src="@Url.Action("Show", "Image", new {id = Model[i].Id})" alt="">
+                <td>
+                    <img src="@Url.Action("Show", "Image", new { id = item.ProductId })" alt="">
+                </td>
+                <td>
+                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count + 1 })">+</a>
+                    <p>@item.Count.ToString(CultureInfo.InvariantCulture)</p>
+                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count - 1 })">-</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("RemoveItemFromBasket", new { productsCountId = item.ProductsCountId })">Delete</a>
                 </td>
             </tr>
+            }
         }
     </table>
+    <div style="float: left">Total Cost: @Model.TotalPrice.ToString(CultureInfo.InvariantCulture)</div>
+    <p>
+        <a href="@Url.Action("CheckoutStepOne")" class="btn btn-primary" style="color: #ffffff">Checkout</a>
+    </p>
 </div>

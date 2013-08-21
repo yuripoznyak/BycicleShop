@@ -1,25 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using BycicleShop.Models.ProductModels;
 
 namespace BycicleShop.Models.BasketModels
 {
     public class BasketModel
     {
+        [Display(Name = "Total Price")]
         public decimal TotalPrice
         {
             get
             {
-                decimal total = 0;
-                foreach (var item in Items)
-                {
-                    total = item.Key.Price*item.Value;
-                }
-                return total;
+                return Items.Sum(item => item.ProductPrice*item.Count);
             }
         }
+        [Required]
         public int UserId { get; set; }
         public bool Active { get; set; }
-        public Dictionary<ProductSimpleModel, int> Items = new Dictionary<ProductSimpleModel, int>();
-
+        public List<ProductsCountModel> Items = new List<ProductsCountModel>(); 
     }
 }

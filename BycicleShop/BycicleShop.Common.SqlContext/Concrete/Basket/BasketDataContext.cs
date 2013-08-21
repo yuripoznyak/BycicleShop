@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Validation;
-using System.Data.Objects;
 using System.Diagnostics;
 using System.Linq;
 using BycicleShop.Common.SqlContext.Entities;
@@ -36,11 +34,6 @@ namespace BycicleShop.Common.SqlContext.Concrete
         {
             var item = Entity.Add(new Basket { UserId = userId, Active = true });
             this.SaveChanges();
-        }
-
-        public void AddToBasket(int productId)
-        {
-            
         }
     }
 }

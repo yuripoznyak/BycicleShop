@@ -67,7 +67,10 @@
     <Compile Include="Concrete\Orders\OrderDataContext.cs" />
     <Compile Include="Concrete\ProductCategories\ProductCategoryDataContext.cs" />
     <Compile Include="Concrete\ProductModels\ProductModelDataContext.cs" />
+    <Compile Include="Concrete\Products\ProductsCountDataContext.cs" />
     <Compile Include="Concrete\Products\ProductDataContext.cs" />
+    <Compile Include="Concrete\Users\RoleDataContext.cs" />
+    <Compile Include="Concrete\Users\UserInRoleDataContext.cs" />
     <Compile Include="Concrete\Users\UsersDataContext.cs" />
     <Compile Include="Entities\AdventureWorks.Context.cs">
       <AutoGen>True</AutoGen>
@@ -99,13 +102,16 @@
     <Compile Include="Entities\ProductModel.cs">
       <DependentUpon>AdventureWorks.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\ProductOrder.cs">
-      <DependentUpon>AdventureWorks.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\ProductsCount.cs">
       <DependentUpon>AdventureWorks.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>AdventureWorks.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\User.cs">
+      <DependentUpon>AdventureWorks.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserInRole.cs">
       <DependentUpon>AdventureWorks.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
