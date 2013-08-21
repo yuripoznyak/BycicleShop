@@ -1,0 +1,25 @@
+﻿@model BycicleShop.Models.OrderModels.OrderReceivedModel
+@{
+    ViewBag.Title = "MakeOrderReceived";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<section class="span5-form">
+    @using (Html.BeginForm("MakeOrderReceived", "Order"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        <fieldset>
+            <legend>Review</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(x => x.Review)
+                    @Html.TextAreaFor(x => x.Review)
+                </li>
+                    @Html.Hidden("OrderId", Model.OrderId)
+                
+            </ol>
+            <input class="btn btn-primary" type="submit" value="Done!"/>
+        </fieldset>
+    }
+</section>

@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Account Account";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<a href="@Url.Action("MyOrders", "Order")" >Orders</a>
+<a href="@Url.Action("MyBasket", "Order")" >Basket</a>
+<a href="@Url.Action("Manage")">Manage Account</a>
+
+@Scripts.Render("~/bundles/modernizr")
+

@@ -1,0 +1,68 @@
+﻿@using System.Diagnostics
+@using System.Globalization
+@model BycicleShop.Models.OrderModels.OrderExtendedModel
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div>
+    <p>@Model.Adress</p>
+    
+    @{
+        Debug.Assert(Model.Received != null, "Model.Received != null");
+    }
+    @if ((bool) Model.Received)
+    {
+        <p>Received</p>
+    }
+    else
+    {
+        <p>Not received</p>
+        <a href="@Url.Action("MakeOrderReceived", new {id = Model.OrderId})" class="btn btn-small">Received</a>
+    }
+    <table class="table table-bordered table-striped table-hover">
+        <tr class="info">
+            <td>#
+            </td>
+            <td>Product Name
+            </td>
+            <td>Price
+            </td>
+            <td>Image
+            </td>
+            <td>Count
+            </td>
+            <td>Delete
+            </td>
+        </tr>
+        @{
+            var i = 1;
+            foreach (var item in Model.Products)
+            {
+            <tr>
+                <td>
+                    <p>@(i++.ToString(CultureInfo.InvariantCulture))</p>
+                </td>
+                <td>
+                    <a href="@Url.Action("ProductInfo", "StoreManager", new { id = item.ProductId })">@(item.ProductName)</a>
+                </td>
+                <td>
+                    <p>@(item.ProductPrice.ToString(CultureInfo.InvariantCulture))</p>
+                </td>
+                <td>
+                    <img src="@Url.Action("Show", "Image", new { id = item.ProductId })" alt="">
+                </td>
+                <td>
+                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count + 1 })">+</a>
+                    <p>@item.Count.ToString(CultureInfo.InvariantCulture)</p>
+                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count - 1 })">-</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("RemoveItemFromBasket", new { productsCountId = item.ProductsCountId })">Delete</a>
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>

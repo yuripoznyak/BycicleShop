@@ -1,0 +1,61 @@
+﻿@model ExtendedSearchModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+@using BycicleShop.Models.ProductModels
+@using PagedList.Mvc
+
+<section class="search-center">
+    @using (Html.BeginForm("ExtendedSearch", "StoreManager"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="span5-form">
+            <fieldset>
+                <legend>Extended Search</legend>
+                <ol>
+                    <li>
+                        @Html.LabelFor(x => x.SearchString)
+                        @Html.TextBoxFor(x => x.SearchString)
+                    </li>
+                    <li>
+                        @Html.LabelFor(x => x.Category)
+                        @Html.DropDownListFor(x => x.Category, new SelectList(Model.Categories), String.Empty)
+                    </li>
+                    <li>
+                        @Html.LabelFor(x => x.MaxPrice)
+                        @Html.TextBoxFor(x => x.MaxPrice)
+                    </li>
+                    <li>
+                        @Html.LabelFor(x => x.MinPrice)
+                        @Html.TextBoxFor(x => x.MinPrice)
+                    </li>
+                    @Html.HiddenFor(x => x.Category)
+                </ol>
+                <input type="submit" value="Search" class="btn, btn-primary, btn-large" />
+            </fieldset>
+        </div>
+    }
+</section>
+<div class="row">
+    @ViewBag.Message
+    @foreach (var item in Model.Products)
+    {
+        <div class="span3">
+            <a href="@Url.Action("ProductInfo", new { id = item.Id })" class="link">
+                <img src="@Url.Action("Show", "Image", new { id = item.Id })" alt="s" style="width: 180px; height: 150px"/><br>
+                @Html.DisplayFor(modelItem => item.Name).ToString()</a>
+            <p style="color: red">@Html.DisplayFor(modelItem => item.Price)</p>
+        </div>
+    }
+</div>
+
+<div class="search-center">
+    Page @(Model.Products.PageCount < Model.Products.PageNumber ? 0 : Model.Products.PageNumber) of @Model.Products.PageCount
+
+    @Html.PagedListPager(Model.Products, page => Url.Action("ExtendedSearch", new { page, Model.Category, Model.SearchString, Model.MinPrice, Model.MaxPrice }))
+</div>
