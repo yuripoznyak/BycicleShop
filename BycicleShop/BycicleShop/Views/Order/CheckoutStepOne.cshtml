@@ -37,7 +37,7 @@
                         <p>@(item.ProductPrice.ToString(CultureInfo.InvariantCulture))</p>
                     </td>
                     <td>
-                        <img src="@Url.Action("Show", "Image", new { id = item.ProductId })" alt="">
+                        <img src="@Url.Action("ShowImage", "Helper", new { id = item.ProductId })" alt="">
                     </td>
                     <td>
                         <a></a>

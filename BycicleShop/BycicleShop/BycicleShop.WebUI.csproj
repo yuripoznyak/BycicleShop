@@ -212,7 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\HelperController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +228,7 @@
     <Compile Include="Models\OrderModels\OrderReceivedModel.cs" />
     <Compile Include="Models\OrderModels\OrderSimpleModel.cs" />
     <Compile Include="Models\OrderModels\OrderStepModel.cs" />
+    <Compile Include="Models\ProductModels\AddProductModel.cs" />
     <Compile Include="Models\ProductModels\ExtendedSearchModel.cs" />
     <Compile Include="Models\ProductModels\ProductExtendedModel.cs" />
     <Compile Include="Models\ProductModels\ProductsCountModel.cs" />
@@ -315,6 +316,7 @@
     <Content Include="Views\Order\MakeOrderReceived.cshtml" />
     <Content Include="Views\StoreManager\ExtendedSearch.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AddProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,9 +329,9 @@
       <Project>{3487fa5d-2836-46a3-b5fa-924ed25b0cee}</Project>
       <Name>BycicleShop.Common.SqlContext</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeFirstMembershipProvider\Itransition.Membership.csproj">
-      <Project>{3eedd162-0712-4acc-9f29-7a6328c3fcb9}</Project>
-      <Name>Itransition.Membership</Name>
+    <ProjectReference Include="..\Itransition.Providers\Itransition.Providers.csproj">
+      <Project>{a89eea65-b10a-42fa-af48-6a202f21a7a6}</Project>
+      <Name>Itransition.Providers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -10,10 +10,9 @@
     <table>
         <tr>
             <td>
-                <img src="@Url.Action("Show", "Image", new {id = Model.Id})" alt="s" />
+                <img src="@Url.Action("ShowImage", "Helper", new { id = Model.Id })" alt="s" />
             </td>
-            <td>
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>
@@ -64,7 +63,11 @@
             </td>
         </tr>
     </table>
-    <a href="@Url.Action("AddToBasket", "Order", new { productId = item.Id, returnUrl = Request.Url.PathAndQuery, count = 1 })"
-               class="btn btn-small btn-primary search-center">Add to Basket</a>
+    <a href="@Url.Action("AddToBasket", "Order", new { productId = Model.Id, returnUrl = Request.Url.PathAndQuery, count = 1 })"
+       class="btn btn-small btn-primary search-center">Add to Basket</a>
+    @if (Roles.IsUserInRole("Admin"))
+    {
+        <a href="@Url.Action("DeleteProduct", "Admin", new {id = Model.Id, returnUrl = Request.Url.PathAndQuery})" class="btn btn-small">Delete Product</a>
+    }
 
 </div>

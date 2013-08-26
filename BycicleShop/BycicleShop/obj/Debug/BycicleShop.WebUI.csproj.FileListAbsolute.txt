@@ -89,8 +89,6 @@ D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\AdventureWorksLT2012_Data.mdf
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\AdventureWorksLT2012_Data_log.ldf
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\PagedList.dll
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\PagedList.xml
-D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\CodeFirstMembershipProvider.dll
-D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\CodeFirstMembershipProvider.pdb
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Recaptcha.dll
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Recaptcha.pdb
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Microsoft.Web.Helpers.dll
@@ -109,3 +107,5 @@ D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Org.Mentalis.Security.Cryptograp
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Mono.Math.xml
 D:\Work\BycicleShop\BycicleShop\BycicleShop\obj\Debug\BycicleShop.WebUI.csproj.App.config
 D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\FluentSecurity.dll
+D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Itransition.Providers.dll
+D:\Work\BycicleShop\BycicleShop\BycicleShop\bin\Itransition.Providers.pdb

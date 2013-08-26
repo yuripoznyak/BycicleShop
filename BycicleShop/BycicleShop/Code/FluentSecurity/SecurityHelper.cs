@@ -22,7 +22,7 @@ namespace BycicleShop.Code.FluentSecurity
                 configuration.For<AccountController>(x => x.Manage()).DenyAnonymousAccess();
                 configuration.For<AccountController>(x => x.Account()).DenyAnonymousAccess();
 
-                configuration.For<ImageController>().Ignore();
+                configuration.For<HelperController>().Ignore();
 
                 configuration.For<OrderController>().DenyAnonymousAccess();
                 configuration.For<OrderController>(x => x.MyOrders()).RequireRole("Admin");

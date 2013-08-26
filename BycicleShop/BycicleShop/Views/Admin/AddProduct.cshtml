@@ -1,0 +1,96 @@
+﻿@model BycicleShop.Models.ProductModels.AddProductModel
+
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<section class="span5-form">
+    @using (Html.BeginForm("AddProduct", "Admin"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <fieldset>
+            <legend>New Product</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.ProductNumber)
+                    @Html.TextBoxFor(x => x.ProductNumber)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Size)
+                    @Html.TextBoxFor(x => x.Size)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Color)
+                    @Html.TextBoxFor(x => x.Color)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Weight)
+                    @Html.TextBoxFor(x => x.Weight)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.ListPrice)
+                    @Html.TextBoxFor(x => x.ListPrice)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.StandardConst)
+                    @Html.TextBoxFor(x => x.StandardConst)
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Category)
+                    @Html.DropDownListFor(x => x.Category, Enumerable.Empty<SelectListItem>(), String.Empty, new { id = "helper" })
+                </li>
+                <li>
+                    @Html.LabelFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name)
+                </li>
+            </ol>
+            <input type="submit" class="btn btn-primary" value="Add" />
+        </fieldset>
+    }
+</section>
+
+<script type="text/javascript">
+    /*$(function () {
+        $.getJSON('Url.Action("GetProductCategories", "Helper")', function (result) {
+            var ddl = $('#helper');
+            ddl.empty();
+            $(result).each(function () {
+                $(document.createElement('option'))
+                    .attr('name', this.Value)
+                    .text(this.Value)
+                    .appendTo(ddl);
+            });
+        });
+    });*/
+    
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetProductCategories", "Helper")",
+            //data: "id=" + id + "&type=" + type,
+            success: function (msg) {
+                var select = $("#helper");
+                select.children.remove();
+                var obj = jQuery.parseJSON(msg);
+                alert(obj.Name);
+                if (msg.d) {
+                    $(msg.d).each(function (index, item) {
+                        //select.append($("<Name>").name(item.Name));
+                        alert(index + " " + item);
+                    });
+                }
+                //$("#helper").html(obj.Name);
+            },
+            error: function (xhr, ajaxOptions, errorThrown) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+</script>

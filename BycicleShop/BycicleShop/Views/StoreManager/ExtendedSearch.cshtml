@@ -47,7 +47,7 @@
     {
         <div class="span3">
             <a href="@Url.Action("ProductInfo", new { id = item.Id })" class="link">
-                <img src="@Url.Action("Show", "Image", new { id = item.Id })" alt="s" style="width: 180px; height: 150px"/><br>
+                <img src="@Url.Action("ShowImage", "Helper", new { id = item.Id })" alt="s" style="width: 180px; height: 150px"/><br>
                 @Html.DisplayFor(modelItem => item.Name).ToString()</a>
             <p style="color: red">@Html.DisplayFor(modelItem => item.Price)</p>
         </div>

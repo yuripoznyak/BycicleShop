@@ -82,7 +82,7 @@ namespace BycicleShop.Controllers
                 try
                 {
                     var membership =
-                        (Itransition.Membership.CustomMembershipProvider)
+                        (Itransition.Providers.CustomMembershipProvider)
                         Membership.Providers["CustomMembershipProvider"];
                     MembershipCreateStatus createStatus;
                     membership.CreateUser(model.UserName, model.Password, model.EmailAdress, "", "", true, null, out createStatus);
@@ -166,7 +166,7 @@ namespace BycicleShop.Controllers
                 try
                 {
                     var membership =
-                        (Itransition.Membership.CustomMembershipProvider)
+                        (Itransition.Providers.CustomMembershipProvider)
                         Membership.Providers["CustomMembershipProvider"];
                     if (membership.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                     {

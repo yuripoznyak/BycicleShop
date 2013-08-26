@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Universal", "Universal", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BycicleShop.WebUI.Admin", "BycicleShop.WebUI.Admin\BycicleShop.WebUI.Admin.csproj", "{1FEBC3F4-E692-421E-9427-FD41430520D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itransition.Providers", "Itransition.Providers\Itransition.Providers.csproj", "{A89EEA65-B10A-42FA-AF48-6A202F21A7A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{1FEBC3F4-E692-421E-9427-FD41430520D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FEBC3F4-E692-421E-9427-FD41430520D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FEBC3F4-E692-421E-9427-FD41430520D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89EEA65-B10A-42FA-AF48-6A202F21A7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89EEA65-B10A-42FA-AF48-6A202F21A7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89EEA65-B10A-42FA-AF48-6A202F21A7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89EEA65-B10A-42FA-AF48-6A202F21A7A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{3487FA5D-2836-46A3-B5FA-924ED25B0CEE} = {BD07CE8A-56D7-43ED-A198-65769C416EB0}
 		{7E521514-78F2-4056-940B-2DEDCADD9854} = {BD07CE8A-56D7-43ED-A198-65769C416EB0}
 		{1FEBC3F4-E692-421E-9427-FD41430520D4} = {BD07CE8A-56D7-43ED-A198-65769C416EB0}
+		{A89EEA65-B10A-42FA-AF48-6A202F21A7A6} = {BD07CE8A-56D7-43ED-A198-65769C416EB0}
 		{3EEDD162-0712-4ACC-9F29-7A6328C3FCB9} = {DF4A51DB-D7E2-416D-975C-5682435492DC}
 	EndGlobalSection
 EndGlobal
