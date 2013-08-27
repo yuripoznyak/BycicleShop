@@ -211,6 +211,7 @@
     <Compile Include="Code\FluentSecurity\SecurityHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HelperController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -223,16 +224,19 @@
     <Compile Include="Models\AccountModels\LoginModel.cs" />
     <Compile Include="Models\AccountModels\ManageModel.cs" />
     <Compile Include="Models\AccountModels\RegisterModel.cs" />
+    <Compile Include="Models\AccountModels\UserProfileModel.cs" />
     <Compile Include="Models\BasketModels\BasketModel.cs" />
     <Compile Include="Models\OrderModels\OrderExtendedModel.cs" />
     <Compile Include="Models\OrderModels\OrderReceivedModel.cs" />
     <Compile Include="Models\OrderModels\OrderSimpleModel.cs" />
     <Compile Include="Models\OrderModels\OrderStepModel.cs" />
     <Compile Include="Models\ProductModels\AddProductModel.cs" />
+    <Compile Include="Models\ProductModels\EditProductModel.cs" />
     <Compile Include="Models\ProductModels\ExtendedSearchModel.cs" />
     <Compile Include="Models\ProductModels\ProductExtendedModel.cs" />
     <Compile Include="Models\ProductModels\ProductsCountModel.cs" />
     <Compile Include="Models\ProductModels\ProductSimpleModel.cs" />
+    <Compile Include="Models\ProductModels\ProductStatisticModel.cs" />
     <Compile Include="Models\ProductModels\SearchProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -303,7 +307,7 @@
     <Content Include="Views\StoreManager\ProductInfo.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
     <Content Include="Views\StoreManager\Search.cshtml" />
-    <Content Include="Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Views\Shared\_EmptyLayout.cshtml" />
     <Content Include="Views\Order\MyOrders.cshtml" />
     <Content Include="Views\Order\MyBasket.cshtml" />
     <Content Include="Views\Order\CheckoutStepOne.cshtml" />
@@ -317,6 +321,12 @@
     <Content Include="Views\StoreManager\ExtendedSearch.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Admin\ProductStatistic.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Error\HttpError500.cshtml" />
+    <Content Include="Views\Error\HttpError403.cshtml" />
+    <Content Include="Views\Error\HttpError404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -67,7 +67,9 @@
        class="btn btn-small btn-primary search-center">Add to Basket</a>
     @if (Roles.IsUserInRole("Admin"))
     {
-        <a href="@Url.Action("DeleteProduct", "Admin", new {id = Model.Id, returnUrl = Request.Url.PathAndQuery})" class="btn btn-small">Delete Product</a>
+        <a href="@Url.Action("DeleteProduct", "Admin", new {id = Model.Id})" class="btn btn-small">Delete Product</a>
+        <a href="@Url.Action("EditProduct", "Admin", new {id = Model.Id})" class="btn btn-small">Edit Product</a>
+        <a href="@Url.Action("ProductStatistic", "Admin", new {id = Model.Id})" class="btn btn-small">Statistic</a>
     }
 
 </div>

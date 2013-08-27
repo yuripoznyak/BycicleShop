@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 
 namespace BycicleShop.Models.ProductModels
@@ -20,7 +21,7 @@ namespace BycicleShop.Models.ProductModels
 
         [Required]
         [Display(Name = "Standard Cost")]
-        public decimal StandardConst { get; set; }
+        public decimal StandardCost { get; set; }
 
         [Required]
         [Display(Name = "List Price")]
@@ -39,5 +40,6 @@ namespace BycicleShop.Models.ProductModels
         [Display(Name = "Category")]
         public string Category { get; set; }
 
+        public IEnumerable<string> Categories { get; set; }
     }
 }

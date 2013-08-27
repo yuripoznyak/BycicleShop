@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "CheckoutStepTwo";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
 }
 
 <section class="span8" style="float: none; margin: auto;">
@@ -32,10 +32,11 @@
                     @Html.TextBoxFor(m => m.CreditCard)
                 </li>
                 <li>
-                    @Html.Raw(Html.GenerateCaptcha("Recaptcha", "clear"))
+                    @Html.Raw(Html.GenerateCaptcha("Recaptcha", "clean"))
                     @Html.ValidationMessage("recaptcha")
                 </li>
                 @Html.Hidden("TotalPrice", Model.TotalPrice)
+                @Html.HiddenFor(x => x.BasketId)
             </ol>
             <input class="btn btn-primary" type="submit" value="Checkout" />
         </fieldset>

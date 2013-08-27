@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,9 +18,6 @@ namespace BycicleShop
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer<UsersContext>(null);
-
-            //WebSecurity.InitializeDatabaseConnection("AdventureWorks", "User", "UserId", "UserName", autoCreateTables: true);
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -28,6 +27,46 @@ namespace BycicleShop
             AuthConfig.RegisterAuth();
 
             SecurityHelper.SetupFluentSecurity();
+        }
+
+        protected void Application_Error()
+        {
+            if (Context.IsCustomErrorEnabled)
+                ShowCustomErrorPage(Server.GetLastError());
+        }
+        private void ShowCustomErrorPage(Exception exception)
+        {
+            var httpException = exception as HttpException ?? new HttpException(500, "Internal Server Error", exception);
+
+            Response.Clear();
+            var routeData = new RouteData();
+            routeData.Values.Add("controller", "Error");
+            routeData.Values.Add("fromAppErrorEvent", true);
+
+            switch (httpException.GetHttpCode())
+            {
+                case 403:
+                    routeData.Values.Add("action", "HttpError403");
+                    break;
+
+                case 404:
+                    routeData.Values.Add("action", "HttpError404");
+                    break;
+
+                case 500:
+                    routeData.Values.Add("action", "HttpError500");
+                    break;
+
+                default:
+                    routeData.Values.Add("action", "GeneralError");
+                    routeData.Values.Add("httpStatusCode", httpException.GetHttpCode());
+                    break;
+            }
+
+            Server.ClearError();
+
+            IController controller = new ErrorController();
+            controller.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
         }
     }
 }

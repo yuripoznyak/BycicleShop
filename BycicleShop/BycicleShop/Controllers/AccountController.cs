@@ -217,6 +217,22 @@ namespace BycicleShop.Controllers
             return View(model);
         }
 
+        public ActionResult UserProfile(string username)
+        {
+            var userId = WebSecurity.GetUserId(username);
+            var user = _usersDataContext.Entity.Find(userId);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(new UserProfileModel
+                {
+                    Id = user.UserId,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Username = user.UserName
+                });
+        }
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)

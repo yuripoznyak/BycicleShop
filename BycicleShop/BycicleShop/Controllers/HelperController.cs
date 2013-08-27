@@ -19,12 +19,12 @@ namespace BycicleShop.Controllers
             return base.File(p.ThumbNailPhoto, "image/gif", p.ThumbnailPhotoFileName);
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public string GetProductCategories()
         {
-            var qwe = _productCategoryDataContext.Entity.Select(x => x.Name).ToList(); 
+            var qwe = _productCategoryDataContext.Entity.Select(x => new {name = x.Name}).ToList();
             //return Json(new {Name = qwe}, JsonRequestBehavior.AllowGet);
-            return JsonConvert.SerializeObject(new { Name = qwe });
-        }
+            return JsonConvert.SerializeObject(qwe);
+        }*/ 
     }
 }

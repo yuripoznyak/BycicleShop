@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "AddProduct";
-    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
 }
 
 <section class="span5-form">
@@ -39,16 +39,17 @@
                     @Html.TextBoxFor(x => x.ListPrice)
                 </li>
                 <li>
-                    @Html.LabelFor(x => x.StandardConst)
-                    @Html.TextBoxFor(x => x.StandardConst)
+                    @Html.LabelFor(x => x.StandardCost)
+                    @Html.TextBoxFor(x => x.StandardCost)
                 </li>
                 <li>
                     @Html.LabelFor(x => x.Category)
-                    @Html.DropDownListFor(x => x.Category, Enumerable.Empty<SelectListItem>(), String.Empty, new { id = "helper" })
+                    @*Html.DropDownListFor(x => x.Category, Enumerable.Empty<SelectListItem>(), String.Empty, new { id = "helper", name = "helper" })*@
+                    @Html.DropDownListFor(x => x.Category, new SelectList(Model.Categories), String.Empty)
                 </li>
                 <li>
-                    @Html.LabelFor(x => x.Name)
-                    @Html.TextBoxFor(x => x.Name)
+                    Html.LabelFor(x => x.Name)
+                    Html.TextBoxFor(x => x.Name)
                 </li>
             </ol>
             <input type="submit" class="btn btn-primary" value="Add" />
@@ -70,20 +71,18 @@
         });
     });*/
     
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "@Url.Action("GetProductCategories", "Helper")",
-            //data: "id=" + id + "&type=" + type,
+            url: "Url.Action("GetProductCategories", "Helper")",
             success: function (msg) {
                 var select = $("#helper");
                 select.children.remove();
-                var obj = jQuery.parseJSON(msg);
-                alert(obj.Name);
+                //var obj = jQuery.parseJSON(msg);
+                alert(msg.Name);
                 if (msg.d) {
                     $(msg.d).each(function (index, item) {
-                        //select.append($("<Name>").name(item.Name));
-                        alert(index + " " + item);
+                        select.append($("<option>").val(item.name).text(item.name));
                     });
                 }
                 //$("#helper").html(obj.Name);
@@ -92,5 +91,7 @@
                 alert(xhr.responseText);
             }
         });
-    });
+        
+    });*/
+    
 </script>

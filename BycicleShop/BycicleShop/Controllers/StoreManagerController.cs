@@ -69,7 +69,7 @@ namespace BycicleShop.Controllers
             if (!String.IsNullOrEmpty(model.Category))
             {
                 var id = _categoryDataContext.GetId(model.Category);
-                products = products.Where(x => x.ProductCategoryID == id).ToList();
+                products = products.Where(x => x.ProductCategoryID == id || x.ProductCategory.ParentProductCategoryID == id).ToList();
             }
             if (model.MinPrice != null)
             {

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc3d5e0b94154e8fb9534ad62732cd6a" Name="Diagram1">
-        <EntityTypeShape EntityType="AdventureWorksDataModel.Basket" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.Order" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductsCount" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.Role" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.User" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.UserInRole" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.Product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductCategory" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductModel" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+      <Diagram DiagramId="bc3d5e0b94154e8fb9534ad62732cd6a" Name="Diagram1" ZoomLevel="84">
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Basket" Width="1.5" PointX="2.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Order" Width="1.5" PointX="2.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductsCount" Width="1.5" PointX="4.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Role" Width="1.5" PointX="2.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.User" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.UserInRole" Width="1.5" PointX="0.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.Product" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductCategory" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdventureWorksDataModel.ProductModel" Width="1.5" PointX="8.75" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="AdventureWorksDataModel.FK_Basket_User" ManuallyRouted="false" />
         <AssociationConnector Association="AdventureWorksDataModel.FK_ProductsCount_Basket" ManuallyRouted="false" />
         <AssociationConnector Association="AdventureWorksDataModel.FK_Order_User" ManuallyRouted="false" />

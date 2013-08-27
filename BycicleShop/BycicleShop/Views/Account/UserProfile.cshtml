@@ -1,0 +1,27 @@
+﻿@model BycicleShop.Models.AccountModels.UserProfileModel
+
+@{
+    ViewBag.Title = "Profile | " + Model.Username;
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<h2>Profile</h2>
+<table>
+    <tr>
+        <td>@Html.LabelFor(x => x.Username)</td>
+        <td>@Html.DisplayFor(x => x.Username)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.FirstName)</td>
+        <td>@Html.DisplayFor(x => x.FirstName)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.LastName)</td>
+        <td>@Html.DisplayFor(x => x.LastName)</td>
+    </tr>
+    @Html.HiddenFor(x => x.Id)
+    @if (Roles.IsUserInRole("Admin"))
+    {
+        
+    }
+</table>
