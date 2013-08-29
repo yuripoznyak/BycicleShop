@@ -1,0 +1,29 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<BycicleShop.Models.ProductModels.ProductSimpleModel>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+<h2>Products</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="span3" style="padding-top: 10px">
+            <a href="@Url.Action("ProductInfo", new { id = item.Id })" class="link">
+                <img src="@Url.Action("ShowImage", "Helper", new { id = item.Id })" alt="s" style="width: 180px; height: 130px"/><br>
+                @Html.DisplayFor(modelItem => item.Name).ToString()</a>
+            <p style="color: red">@Html.DisplayFor(modelItem => item.Price)</p>
+            <a href="@Url.Action("AddToBasket", "Order", new { productId = item.Id, returnUrl = Request.Url.PathAndQuery, count = 1 })"
+               class="btn btn-small btn-primary search-center">Add to Basket</a>
+        </div>
+    }
+</div>
+
+<div class="search-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

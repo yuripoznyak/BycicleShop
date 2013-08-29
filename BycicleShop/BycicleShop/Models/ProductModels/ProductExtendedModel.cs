@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BycicleShop.Models.AdminModels;
 
 namespace BycicleShop.Models.ProductModels
 {

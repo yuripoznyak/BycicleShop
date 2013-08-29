@@ -20,8 +20,10 @@
         <td>@Html.DisplayFor(x => x.LastName)</td>
     </tr>
     @Html.HiddenFor(x => x.Id)
-    @if (Roles.IsUserInRole("Admin"))
-    {
-        
-    }
 </table>
+@if (Roles.IsUserInRole("Admin"))
+{
+    <a href="@Url.Action("UserActivity", "Admin", new {username = Model.Username})" class="btn btn-small">Sales statistics</a>
+    <a href="@Url.Action("DeleteUser", "Admin", new {id = Model.Username})" class="btn btn-small">Delete user</a>
+    <a href="@Url.Action("UnlockUser", "Admin", new {id = Model.Username})" class="btn btn-small">Unlock user</a>
+}

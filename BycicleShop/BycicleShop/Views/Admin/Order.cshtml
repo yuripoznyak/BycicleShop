@@ -1,0 +1,61 @@
+﻿@using System.Diagnostics
+@using System.Globalization
+@model BycicleShop.Models.OrderModels.OrderExtendedModel
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<h2>Order</h2>
+<div>
+    <p>Adress: @Model.Adress</p>
+    
+    @{
+        Debug.Assert(true, "Model.Received != null");
+    }
+    @if (Model.Received)
+    {
+        <p>Status: Received</p>
+    }
+    else
+    {
+        <p>Status: Not received</p>
+    }
+    <table class="table table-bordered table-striped table-hover">
+        <tr class="info">
+            <td>#
+            </td>
+            <td>Product Name
+            </td>
+            <td>Price
+            </td>
+            <td>Image
+            </td>
+            <td>Count
+            </td>
+        </tr>
+        @{
+            var i = 1;
+            foreach (var item in Model.Products)
+            {
+            <tr>
+                <td>
+                    <p>@(i++.ToString(CultureInfo.InvariantCulture))</p>
+                </td>
+                <td>
+                    <a href="@Url.Action("ProductInfo", "StoreManager", new { id = item.ProductId })">@(item.ProductName)</a>
+                </td>
+                <td>
+                    <p>@(item.ProductPrice.ToString(CultureInfo.InvariantCulture))</p>
+                </td>
+                <td>
+                    <img src="@Url.Action("ShowImage", "Helper", new { id = item.ProductId })" alt="">
+                </td>
+                <td>
+                    <p>@item.Count.ToString(CultureInfo.InvariantCulture)</p>
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>

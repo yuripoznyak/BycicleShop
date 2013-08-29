@@ -25,6 +25,6 @@ namespace BycicleShop.Controllers
             var qwe = _productCategoryDataContext.Entity.Select(x => new {name = x.Name}).ToList();
             //return Json(new {Name = qwe}, JsonRequestBehavior.AllowGet);
             return JsonConvert.SerializeObject(qwe);
-        }*/ 
+        }*/
     }
 }

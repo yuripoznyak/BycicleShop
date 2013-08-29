@@ -1,0 +1,38 @@
+﻿@model PagedList.IPagedList<BycicleShop.Models.AdminModels.OrderModel>
+@using System.Globalization
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<h2>Orders</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <tr class="info">
+        <td>#</td>
+        <td>Adress</td>
+        <td>Sent Date</td>
+        <td>Receive Date</td>
+        <td>Username</td>
+    </tr>
+    @{
+        var i = 1;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Order", "Admin", new {id = item.Id})">@(i++.ToString(CultureInfo.InvariantCulture))</a></td>
+                <td><a href="@Url.Action("Order", "Admin", new {id = item.Id})">@item.Adress</a></td>
+                <td><a href="@Url.Action("Order", "Admin", new {id = item.Id})">@item.SentDate.ToString()</a></td>
+                <td><a href="@Url.Action("Order", "Admin", new {id = item.Id})">@item.ReceivedDate.ToString()</a></td>
+                <td><a href="@Url.Action("UserProfile", "Account", new {username = item.Username})">@item.Username</a></td>
+            </tr>
+        }
+    }
+</table>
+
+<div class="search-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Orders", new { page }))
+</div>

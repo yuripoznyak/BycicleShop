@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BycicleShop.Models.AdminModels;
 using BycicleShop.Models.ProductModels;
 
 namespace BycicleShop.Models.OrderModels

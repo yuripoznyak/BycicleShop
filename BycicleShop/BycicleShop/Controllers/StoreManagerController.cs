@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BycicleShop.Common.SqlContext.Concrete;
@@ -12,19 +13,29 @@ namespace BycicleShop.Controllers
         private ProductDataContext _productDataContext = new ProductDataContext();
         private ProductCategoryDataContext _categoryDataContext = new ProductCategoryDataContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
-            var products =
-                _productDataContext.Entity.Select(
-                    product =>
-                    new ProductSimpleModel
-                        {
-                            Name = product.Name,
-                            Price = product.ListPrice,
-                            Id = product.ProductID
-                        }).ToList();
+            /*var categories =
+                _categoryDataContext.Entity.Where(x => x.ParentProductCategoryID == null).Select(x => new CategoryModel
+                    {
+                        Id = x.ProductCategoryID,
+                        Name = x.Name,
+                        //PhotoId = _productDataContext.Entity.First(s => s.ProductCategory.ParentProductCategoryID == x.ParentProductCategoryID).ProductID
+                    }).ToList();*/
 
-            return View(products.OrderBy(s => s.Id).ToPagedList(page ?? 1, 20));
+            //var items = _categoryDataContext.Entity.Where(x => x.ParentProductCategoryID == null);
+            var categories = new List<CategoryModel>();
+            foreach (var productCategory in _categoryDataContext.Entity.Where(x => x.ParentProductCategoryID == null))
+            {
+                categories.Add(new CategoryModel
+                    {
+                        Id = productCategory.ProductCategoryID,
+                        Name = productCategory.Name,
+                        PhotoId = _productDataContext.Entity.First(s => s.ProductCategory.ParentProductCategoryID == productCategory.ProductCategoryID).ProductID
+                    });
+            }
+
+            return View(categories);
         }
 
         public ActionResult ProductInfo(int id)
@@ -96,35 +107,21 @@ namespace BycicleShop.Controllers
                     });
         }
 
-        /*public ActionResult ExtendedSearch(int? page, string category, string searchString, int? minPrice, int? maxPrice)
+        public ActionResult Products(int id, int? page)
         {
             var products =
-                _productDataContext.Entity.Where(x => x.Name.Contains(searchString) && x.ListPrice >= minPrice).OrderBy(s => s.ProductID).ToList();
+                _productDataContext.Entity.Where(
+                    x => x.ProductCategory.ProductCategoryID == id || x.ProductCategory.ParentProductCategoryID == id)
+                                   .Select(
+                                       product =>
+                                       new ProductSimpleModel
+                                           {
+                                               Name = product.Name,
+                                               Price = product.ListPrice,
+                                               Id = product.ProductID
+                                           }).ToList();
 
-            if (!String.IsNullOrEmpty(category))
-            {
-                var id = _categoryDataContext.GetId(category);
-                products = products.Where(x => x.ProductCategoryID == id).ToList();
-            }
-            if (maxPrice != 0)
-            {
-                products = products.Where(x => x.ListPrice <= maxPrice).ToList();
-            }
-            var productModel = products.Select(product => new ProductSimpleModel { Id = product.ProductID, Name = product.Name, Price = product.ListPrice }).ToList();
-            if (productModel.Count == 0)
-            {
-                ViewBag.Message = "no elements";
-            }
-            return
-                View(new ExtendedSearchModel
-                {
-                    Products = productModel.ToPagedList(page ?? 1, 20),
-                    SearchString = searchString,
-                    Category = category,
-                    MaxPrice = maxPrice,
-                    MinPrice = minPrice,
-                    Categories = _categoryDataContext.Entity.Select(x => x.Name).ToList()
-                });
-        }*/
+            return View(products.OrderBy(s => s.Id).ToPagedList(page ?? 1, 20));
+        }
     }
 }

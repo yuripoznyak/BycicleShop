@@ -10,7 +10,7 @@
     <p>@Model.Adress</p>
     
     @{
-        Debug.Assert(Model.Received != null, "Model.Received != null");
+        Debug.Assert(true, "Model.Received != null");
     }
     @if ((bool) Model.Received)
     {
@@ -33,8 +33,7 @@
             </td>
             <td>Count
             </td>
-            <td>Delete
-            </td>
+            
         </tr>
         @{
             var i = 1;
@@ -54,13 +53,9 @@
                     <img src="@Url.Action("ShowImage", "Helper", new { id = item.ProductId })" alt="">
                 </td>
                 <td>
-                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count + 1 })">+</a>
                     <p>@item.Count.ToString(CultureInfo.InvariantCulture)</p>
-                    <a href="@Url.Action("ChangeProductsCount", "Order",/* new {},new AjaxOptions{UpdateTargetId = "productsCount"}, */new { productsCountId = item.ProductsCountId, count = item.Count - 1 })">-</a>
                 </td>
-                <td>
-                    <a href="@Url.Action("RemoveItemFromBasket", new { productsCountId = item.ProductsCountId })">Delete</a>
-                </td>
+                
             </tr>
             }
         }

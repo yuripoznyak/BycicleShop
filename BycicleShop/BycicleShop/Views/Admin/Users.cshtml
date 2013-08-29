@@ -1,0 +1,37 @@
+﻿@using System.Globalization
+@using PagedList.Mvc
+@model PagedList.IPagedList<BycicleShop.Models.AccountModels.UserProfileModel>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<h2>Users</h2>
+<a href="@Url.Action("AddNewUser", "Admin")" class="btn btn-small" style="margin: 0 0 5px 0">Add User</a>
+<table class="table table-bordered table-striped table-hover">
+    <tr class="info">
+        <td>#</td>
+        <td>Username</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+    </tr>
+    @{
+        var i = 1;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("UserProfile", "Account", new {username = item.Username})">@(i++.ToString(CultureInfo.InvariantCulture))</a></td>
+                <td><a href="@Url.Action("UserProfile", "Account", new {username = item.Username})">@item.Username</a></td>
+                <td><a href="@Url.Action("UserProfile", "Account", new {username = item.Username})">@item.FirstName</a></td>
+                <td><a href="@Url.Action("UserProfile", "Account", new {username = item.Username})">@item.LastName</a></td>
+            </tr>
+        }
+    }
+</table>
+
+<div class="search-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Users", new { page }))
+</div>

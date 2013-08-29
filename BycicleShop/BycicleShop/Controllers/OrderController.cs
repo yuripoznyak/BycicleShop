@@ -16,7 +16,7 @@ namespace BycicleShop.Controllers
         private OrderDataContext _orderDataContext = new OrderDataContext();
         private BasketDataContext _basketDataContext = new BasketDataContext();
         private ProductsCountDataContext _productsCountDataContext = new ProductsCountDataContext();
-        //private UsersDataContext _usersDataContext = new UsersDataContext();
+        private UsersDataContext _usersDataContext = new UsersDataContext();
 
         [HttpGet]
         //[Authorize(Roles = "Admin")]
@@ -45,7 +45,12 @@ namespace BycicleShop.Controllers
         
         public ActionResult Order(int id)
         {
-            var order = _orderDataContext.Entity.Find(id);
+            var order = _usersDataContext.Entity.First(x => x.UserName == User.Identity.Name).Orders.First(x => x.OrderId == id);
+            //var order = _orderDataContext.Entity.Find(id);
+            if (order == null)
+            {
+                return RedirectToAction("HttpError404", "Error");
+            }
             var model = new OrderExtendedModel
                 {
                     Adress = order.Adress,

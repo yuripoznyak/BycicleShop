@@ -1,4 +1,4 @@
-﻿@model BycicleShop.Models.ProductModels.EditProductModel
+﻿@model BycicleShop.Models.AdminModels.EditProductModel
 
 @{
     ViewBag.Title = "EditProduct";
@@ -12,7 +12,7 @@
         @Html.ValidationSummary()
 
         <fieldset>
-            <legend>New Product</legend>
+            <legend>Edit Product</legend>
             <ol>
                 <li>
                     @Html.LabelFor(x => x.Name)

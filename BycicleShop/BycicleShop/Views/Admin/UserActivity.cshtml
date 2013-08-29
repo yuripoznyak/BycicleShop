@@ -1,0 +1,30 @@
+﻿@using System.Globalization
+@model List<BycicleShop.Models.AdminModels.OrderStatisticModel>
+@{
+    ViewBag.Title = "UserActivity";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<h2>@(Model.First().Username) orders</h2>
+<table class="table table-bordered table-striped table-hover">
+    <tr class="info">
+        <td>#</td>
+        <td>Adress</td>
+        <td>Total Price</td>
+        <td>Sent Date</td>
+        <td>Receive Date</td>
+    </tr>
+    @{
+        var i = 1;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Order", "Admin", new {id = item.OrderId})">@(i++.ToString(CultureInfo.InvariantCulture))</a></td>
+                <td>@item.Adress</td>
+                <td>@item.TotalPrice.ToString()</td>
+                <td>@item.SentDate.ToString()</td>
+                <td>@item.ReceiveDate.ToString()</td>
+            </tr>
+        }
+    }
+</table>

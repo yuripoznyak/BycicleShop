@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+using System.Web.Security;
 using BycicleShop.Controllers;
 using FluentSecurity;
 
@@ -12,11 +13,10 @@ namespace BycicleShop.Code.FluentSecurity
             SecurityConfigurator.Configure(configuration =>
             {
                 configuration.GetAuthenticationStatusFrom(() => HttpContext.Current.User.Identity.IsAuthenticated);
-                configuration.GetRolesFrom(() => SecurityHelper.UserRoles());
+                configuration.GetRolesFrom(UserRoles);
 
                 configuration.For<HomeController>().Ignore();
-                //configuration.For<HomeController>().RequireRole("Admin");
-
+                
                 configuration.For<AccountController>().DenyAuthenticatedAccess();
                 configuration.For<AccountController>(x => x.LogOff()).DenyAnonymousAccess();
                 configuration.For<AccountController>(x => x.Manage()).DenyAnonymousAccess();
@@ -25,7 +25,9 @@ namespace BycicleShop.Code.FluentSecurity
                 configuration.For<HelperController>().Ignore();
 
                 configuration.For<OrderController>().DenyAnonymousAccess();
-                configuration.For<OrderController>(x => x.MyOrders()).RequireRole("Admin");
+
+                configuration.For<AdminController>().DenyAnonymousAccess();
+                configuration.For<AdminController>().RequireRole("Admin");
 
                 configuration.For<StoreManagerController>().Ignore();
 

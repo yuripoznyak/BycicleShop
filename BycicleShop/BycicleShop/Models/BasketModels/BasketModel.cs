@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using BycicleShop.Models.AdminModels;
 using BycicleShop.Models.ProductModels;
 
 namespace BycicleShop.Models.BasketModels
